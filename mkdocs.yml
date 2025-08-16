@@ -1,0 +1,43 @@
+site_name: IceNvim Documentation
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'brown'
+    accent: 'orange'
+  logo: 'img/logo.png'
+  favicon: 'img/logo.png'
+extra:
+  social:
+    - icon: 'fontawesome/brands/github'
+      link: 'https://github.com/Shaobin-Jiang/IceNvim'
+copyright: 'Copyright &copy; 2022-2025 Shaobin Jiang'
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+repo_url: 'https://github.com/Shaobin-Jiang/IceNvim'
+repo_name: 'Shaobin-Jiang/IceNvim'
+docs_dir: docs
+nav:
+  - Introduction: 'index.md'
+  - Installation: 'installation.md'
+  - Utilities:
+    - Plugins: 'utilities/plugins.md'
+    - Keymaps: 'utilities/keymaps.md'
+    - Commands: 'utilities/commands.md'
+  - Customization:
+    - Getting Started: 'customization/get-started.md'
+    - Basic: 'customization/basic.md'
+    - Plugins: 'customization/plugins.md'
+  - Q&A: 'qa.md'
