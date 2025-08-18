@@ -110,7 +110,6 @@ Each language has a config table. If the table has `managed_by_plugin = true`, t
 
 - flutter: flutter-tools
 - rust: rustaceanvim
-- tinymist: typst-preview
 
 Others are managed by LSPs and formatters. In this case, each table can optionally have a `formatter` and a `setup` field, where `formatter` is the name you can find by running the command `Mason` and `setup` is the configuration available to the language server. You can find the latter [here](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md) (Most of the time you really do not need that, though).
 
