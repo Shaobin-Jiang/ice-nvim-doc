@@ -120,6 +120,12 @@ You might notice that some of these languages have strange names. Why not just n
 Ice.lsp["haskell-language-server"] = {} -- `formatter` and `setup` can be omitted
 ```
 
+## Snippets
+
+IceNvim supports VsCode-styled snippets. For example, if you want to create snippets that take effect in markdown files, just create `custom/snippets/markdown.json` and write whatever code you like in there.
+
+For more information on how to write such snippets, refer to the [official documentation](https://code.visualstudio.com/docs/editing/userdefinedsnippets).
+
 ## Colorschemes
 
 Conventionally, we use the `colorscheme` command to set colorschemes. In IceNvim, as you ought to remember from the [utilities/keymaps](../../utilities/keymaps) section, we use the <kbd>&lt;C-k&gt;&lt;C-t&gt;</kbd> keymap to open a colorscheme picker. This is quite handy in that it persists across sessions.
