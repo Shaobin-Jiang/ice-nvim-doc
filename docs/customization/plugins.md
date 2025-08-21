@@ -127,9 +127,18 @@ For more information on how to write such snippets, refer to the [official docum
 
 ## Colorschemes
 
-Conventionally, we use the `colorscheme` command to set colorschemes. In IceNvim, as you ought to remember from the [utilities/keymaps](../../utilities/keymaps) section, we use the <kbd>&lt;C-k&gt;&lt;C-t&gt;</kbd> keymap to open a colorscheme picker. This is quite handy in that it persists across sessions.
+Conventionally, we use the `colorscheme` command to set colorschemes. In IceNvim, as you ought to remember from the [utilities/keymaps](../../utilities/keymaps) section, we use the <kbd>&lt;C-k&gt;&lt;C-t&gt;</kbd> keymap to open a colorscheme picker. This is quite handy in that it persists across sessions. Alternatively, you can use the `IceColorscheme` command to directly set the colorscheme from the command line.
 
-For a colorscheme to appear in this picker, you need not only to install the colorscheme plugin itself, but also register it in the `Ice.colorschemes` (notice the `s` at the end) table. Each table must have a `name` value which can be used with `:colorscheme name` and a `background` field that is either `"dark"` or `"light"`. Optionally you can have a `setup` field that can be passed to the plugin's setup function. For example:
+For a colorscheme to appear in this picker or to work for the `IceColorscheme` command, you need not only to install the colorscheme plugin itself, but also register it in the `Ice.colorschemes` (notice the `s` at the end) table. Each table must have a `name` value which can be used with `:colorscheme name` and a `background` field that is either `"dark"` or `"light"`.
+
+Optionally you can have a `setup` field that:
+
+- can be passed to the plugin's setup function if it is a table
+- can be directly called when setting the colorscheme if it is a function
+
+And a `transparent` field that, if set to `true`, will trigger the `TransparentEnable` command when this colorscheme is used.
+
+For example:
 
 ```lua
 -- gruvbox-light will appear in the colorscheme picker
@@ -144,7 +153,18 @@ Ice.colorschemes["gruvbox-light"] = {
         contrast = "hard",
     },
     background = "light",
+}
+
+-- When this colorscheme is used, the background will go transparent as it has `transparent = true`
+Ice.colorschemes["monet-dark"] = {
+    name = "monet",
+    transparent = true,
+    setup = function()
+        local palette = require "monet.palette"
+        setmetatable(palette, { __index = palette.defaults })
+    end,
+    background = "dark",
 },
 ```
 
-You can also set the colorscheme via `Ice.colorscheme`. It is a string value that is one of the available colorschemes from `Ice.colorschemes`.
+If you would like a code the colorscheme in your custom config files, you can also set the colorscheme via `Ice.colorscheme`. It is a string value that is one of the available colorschemes from `Ice.colorschemes`.

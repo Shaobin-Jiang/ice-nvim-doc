@@ -3,6 +3,7 @@ IceNvim has created a number of commands:
 - `IceAbout`: opens a float window that displays the info about IceNvim
 - `IceCheckIcons`: opens a float window that displays a number of nerd icons; you can use this to check whether you have correctly set up your nerd font
 - `IceCheckPlugins`: opens a float window that displays plugins that have not been updated for more than 30 days
+- `IceColorscheme`: selects a IceNvim-builtin colorscheme that also takes care of things like transparency; persists across sessions
 - `IceUpdate`: updates IceNvim itself (**not updating the plugins**)
 - `IceHealth`: run a health check on the prerequisites for IceNvim
 - `IceRepeat`: make a command repeatable when creating a keymap; for instance, `vim.keymap.set("n", "<leader>zz", ":IceRepeat :BufferLineMovePrev<CR>")` allows you to prefix a count before <kbd>&lt;leader&gt;zz</kbd> 
