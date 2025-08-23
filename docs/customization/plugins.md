@@ -136,7 +136,26 @@ Ice.lsp["haskell-language-server"] = {} -- `formatter` and `setup` can be omitte
 
 ## Snippets
 
-IceNvim supports VsCode-styled snippets. For example, if you want to create snippets that take effect in markdown files, just create `custom/snippets/markdown.json` and write whatever code you like in there.
+IceNvim supports VsCode-styled snippets. For example, if you want to create snippets that take effect in markdown files, you need to:
+
+- create `custom/snippets/markdown.json`
+- register it in `custom/snippets/package.json`
+- write whatever code you like in there
+
+The `package.json` file looks something like this:
+
+```json
+{
+    "contributes": {
+        "snippets": [
+            {
+                "language": "markdown",
+                "path": "./markdown.json"
+            }
+        ]
+    }
+}
+```
 
 For more information on how to write such snippets, refer to the [official documentation](https://code.visualstudio.com/docs/editing/userdefinedsnippets).
 
