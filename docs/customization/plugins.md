@@ -111,7 +111,22 @@ Each language has a config table. If the table has `managed_by_plugin = true`, t
 - flutter: flutter-tools
 - rust: rustaceanvim
 
-Others are managed by LSPs and formatters. In this case, each table can optionally have a `formatter` and a `setup` field, where `formatter` is the name you can find by running the command `Mason` and `setup` is the configuration available to the language server. You can find the latter [here](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md) (Most of the time you really do not need that, though).
+Others are managed by LSPs and formatters. In this case, each table can optionally have a `formatter` and a `setup` field, where `formatter` is the name you can find by running the command `Mason` and `setup` is the configuration available to the language server. You can find out how to configure the latter value for specific languages [here](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md) (most of the time you really do not need that, though).
+
+!!! note
+    The `setup` value is actually of `vim.lsp.Config` type and so you can check out what values you can use by running `:h vim.lsp.Config`.
+
+    The exception, though, is the `on_attach` function. This function runs when the lsp is attached to the buffer and takes two arguments, which are the active client and the buffer id. For example, you can do something like this:
+
+    ```lua
+    Ice.lsp.omnisharp.setup.on_attach = function(client, bufnr)
+        client.server_capabilities.semanticTokensProvider = nil
+    end
+    ```
+
+    This is added for compatibility concerns since back in the days when people use nvim-lspconfig to configure language servers, such a value was provided. Neovim's new lsp api renders setting up lsp with nvim-lspconfig unnecessary, but as `on_attach` is not something provided by the former, migrating from one's old configuration would prove troublesome.
+
+    Just for some background reading, IceNvim actually implements `on_attach` via the `LspAttach` event. An alternative would have been to not implement this at all and instead ask the user to write their own autocmds, but that would be rather messy compared with the old way using `on_attach`.
 
 You might notice that some of these languages have strange names. Why not just name it `bash` instead of `bash-language-server`? That is because these are names from `Mason` LSPs. Should you wish to add support for other languages without using a plugin, you should use the name of the LSP from `Mason` as its field name. For example, haskell's LSP is named `haskell-language-server` if you look it up in Mason. To add support for haskell, do this:
 
