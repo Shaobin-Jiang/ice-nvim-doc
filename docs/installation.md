@@ -18,7 +18,9 @@ To get IceNvim running, you need to have these dependencies installed:
 - ripgrep
 - wget
 
-Also, if you are using Linux, you will be needing these:
+If you are using Windows, you will also be needing msvc (cl.exe needs to be in PATH).
+
+If you are using Linux, you will also be needing these:
 
 - unzip
 - python virtual environment
@@ -43,7 +45,7 @@ sudo pacman -S --needed curl gzip wget fd ripgrep gcc nodejs npm python python-p
 Windows (via scoop):
 
 ```bash
-scoop install curl gzip wget fd ripgrep mingw nodejs-lts python
+scoop install curl gzip wget fd ripgrep mingw nodejs-lts python tree-sitter
 ```
 
 </details>
