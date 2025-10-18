@@ -73,3 +73,7 @@ IceNvim automatically switches dir by trying to detect for certain file / direct
 
 !!! warning
     `Ice.chdir_exclude_filetype`, `Ice.chdir_exclude_buftype` and `Ice.chdir_root_pattern` do not exist by default! You can only set their value but cannot modify their values initially.
+
+## File Size Limit
+
+For particularly large files, enabling blink / treesitter might significantly slow things down. To prevent this, users can set `Ice.max_file_size` to disable blink.cmp and nvim-treesitter for files that are larger than this value in B. By default this value is 1024 * 1024, or 1MB.
