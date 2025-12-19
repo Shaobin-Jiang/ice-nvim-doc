@@ -105,6 +105,10 @@ Additionally, if you are using wsl, you might have to do this:
 chmod +x ~/.config/nvim/bin/uclip.exe
 ```
 
+### Code Counting
+
+IceNvim can display the number of lines of codes in pwd via [`tokei`](https://github.com/XAMPPRocky/tokei). To enable this feature, you might want to install tokei using your favorite package manager.
+
 ## Language-Specific Installation
 
 ### C\# Development
