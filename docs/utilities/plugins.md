@@ -10,7 +10,7 @@ Beware that the way IceNvim uses Lazy is slightly different from the official ap
 
 IceNvim comes with the following colorschemes (and their variants; for details, check out the corresponding repositories):
 
-- [github theme](https://github.com/projekt0n/github-nvim-theme)
+- [cyberdream theme](https://github.com/scottmckendry/cyberdream.nvim)
 - [gruvbox theme](https://github.com/ellisonleao/gruvbox.nvim)
 - [kanagawa theme](https://github.com/rebelot/kanagawa.nvim)
 - [miasma theme](https://github.com/xero/miasma.nvim)
