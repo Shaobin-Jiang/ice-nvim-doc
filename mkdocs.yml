@@ -11,7 +11,7 @@ extra:
   social:
     - icon: 'fontawesome/brands/github'
       link: 'https://github.com/Shaobin-Jiang/IceNvim'
-copyright: 'Copyright &copy; 2022-2025 Shaobin Jiang'
+copyright: 'Copyright &copy; 2022-2026 Shaobin Jiang'
 markdown_extensions:
   - admonition
   - codehilite:
