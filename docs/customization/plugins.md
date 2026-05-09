@@ -88,9 +88,11 @@ IceNvim supports development for these languages: Bash / C / C++ / C# / Flutter 
 - `typescript-language-server`
 - `html-lsp`
 - `json-lsp`
+- `emmylua_ls`
 - `lua-language-server`
 - `omnisharp`: C#
 - `flutter`
+- `latex`
 
 By default, only `lua-language-server` is enabled. To enable support for a language, just set `enabled = true`:
 
@@ -105,6 +107,14 @@ for _, lsp in pairs(vim.tbl_keys(Ice.lsp)) do
     Ice.lsp[lsp].enabled = true
 end
 ```
+
+!!! note
+    You should probably avoid enabling all lanauges, though, because `emmylua_ls` and `lua-language-server` are both lua language servers and you do not want both of them enabled simultaneously.
+
+    Of these two servers, `emmylua_ls` has better performance but requires a more complicated setup. You need to:
+
+    - install emmylua_ls via `cargo install emmylua_ls` and add `~/.cargo/bin` to $PATH
+    - acquire luv via `git clone https://github.com/LuaCATS/luv` and add it to neovim runtime path (maybe under the `custom` dir)
 
 Each language has a config table. If the table has `managed_by_plugin = true`, that language is managed by a plugin, and configuration for that language go to the corresponding `Ice.plugins` table:
 
