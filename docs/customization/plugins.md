@@ -15,7 +15,7 @@ local view = Ice.plugins["nvim-tree"].opts.view
 view.number = true
 view.relativenumber = true
 
-Ice.plugins.bufferline = nil -- disables bufferline
+Ice.plugins.avante = nil -- disables avante
 
 -- Field name does not matter when adding a new plugin
 Ice.plugins.aaa = {
@@ -46,7 +46,7 @@ If you are familiar with lazy.nvim, you should know about the `VeryLazy` event a
 Note that `IceLoad` is a custom event, so when using it in the lazy.nvim `event` field, it should be prefixed with a `User `. For example:
 
 ```lua
-Ice.plugins.bufferline.event = "User IceLoad"
+Ice.plugins.avante.event = "User IceLoad"
 ```
 
 ### `IceAfter` Event

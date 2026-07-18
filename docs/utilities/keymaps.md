@@ -20,6 +20,8 @@ These keymaps do not rely on external plugins. The details can be viewed in `lua
 | <kbd>&lt;C-s&gt;</kbd> | save file | normal / insert / visual |
 | <kbd>&lt;C-t&gt;</kbd> | open terminal | normal |
 | <kbd>&lt;C-z&gt;</kbd> | undo | normal / insert / visual / terminal / command |
+| <kbd>&lt;leader&gt;bh</kbd> | go to previous buffer | normal |
+| <kbd>&lt;leader&gt;bl</kbd> | go to next buffer | normal |
 
 ## Command Mode Keymaps
 
@@ -43,7 +45,7 @@ These keymaps are mostly prefixed with the leader key (<kbd>&lt;SPC&gt;</kbd> ) 
 | prefix | group |
 | :----: | :---: |
 | <kbd>&lt;leader&gt;a</kbd> | avante |
-| <kbd>&lt;leader&gt;b</kbd> | bufferline |
+| <kbd>&lt;leader&gt;b</kbd> | buffers |
 | <kbd>&lt;leader&gt;g</kbd> | git |
 | <kbd>&lt;leader&gt;h</kbd> | hop |
 | <kbd>&lt;leader&gt;l</kbd> | lsp |
@@ -61,21 +63,6 @@ The full list of these keymaps include:
 | <kbd>&lt;leader&gt;awa</kbd> | focus result | normal |
 | <kbd>&lt;leader&gt;aws</kbd> | focus selected files | normal |
 | <kbd>&lt;leader&gt;awt</kbd> | focus todo | normal |
-
-### Bufferline
-
-This part relies on the bufferline.nvim plugin.
-
-| key | description | modes |
-| :-: | :---------: | :---: |
-| <kbd>&lt;leader&gt;bc</kbd> | bufferline pick close | normal |
-| <kbd>&lt;leader&gt;bd</kbd> | bufferline close current buffer | normal |
-| <kbd>&lt;leader&gt;bh</kbd> | bufferline previous buffer | normal |
-| <kbd>&lt;leader&gt;bl</kbd> | bufferline next buffer | normal |
-| <kbd>&lt;leader&gt;bo</kbd> | bufferline close other buffers | normal |
-| <kbd>&lt;leader&gt;bp</kbd> | bufferline pick buffer | normal |
-| <kbd>&lt;leader&gt;bm</kbd> | bufferline move buffer rightwards | normal |
-| <kbd>&lt;leader&gt;bM</kbd> | bufferline move buffer leftwards | normal |
 
 ### Git
 
@@ -130,6 +117,25 @@ This part relies on the telescope.nvim plugin.
 | :-: | :---------: | :---: |
 | <kbd>&lt;leader&gt;t&lt;C-f&gt;</kbd> | find in pwd | normal |
 | <kbd>&lt;leader&gt;tf</kbd> | find file | normal |
+| <kbd>&lt;leader&gt;bi</kbd> | manage buffers | normal |
+
+Specifically, in the telescope picker, you have these keymaps:
+
+| key | description | modes |
+| :-: | :---------: | :---: |
+| <kbd>&lt;C-j&gt;</kbd> | next selection | insert |
+| <kbd>&lt;C-k&gt;</kbd> | previous selection | insert |
+| <kbd>&lt;C-n&gt;</kbd> | next history | insert |
+| <kbd>&lt;C-p&gt;</kbd> | previous history in pwd | insert |
+| <kbd>&lt;C-c&gt;</kbd> | exit | insert |
+| <kbd>&lt;C-u&gt;</kbd> | scroll up | insert |
+| <kbd>&lt;C-d&gt;</kbd> | scroll down | insert |
+
+In the buffer management picker, you also have this keymap:
+
+| key | description | modes |
+| :-: | :---------: | :---: |
+| <kbd>&lt;M-d&gt;</kbd> | delete buffer | insert |
 
 ### Utils
 

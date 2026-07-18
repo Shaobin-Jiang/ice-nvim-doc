@@ -19,7 +19,6 @@ IceNvim comes with the following colorschemes (and their variants; for details, 
 
 As well as some other UI-related plugins, including:
 
-- [bufferline](https://github.com/akinsho/bufferline.nvim): displays opened buffers at the top
 - [dashboard](https://github.com/nvimdev/dashboard-nvim): provides a welcome screen when opening neovim
 - [fidget](https://github.com/j-hui/fidget.nvim): displays pretty notifications
 - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim): adds indentation lines
