@@ -20,6 +20,7 @@ These keymaps do not rely on external plugins. The details can be viewed in `lua
 | <kbd>&lt;C-s&gt;</kbd> | save file | normal / insert / visual |
 | <kbd>&lt;C-t&gt;</kbd> | open terminal | normal |
 | <kbd>&lt;C-z&gt;</kbd> | undo | normal / insert / visual / terminal / command |
+| <kbd>&lt;leader&gt;bd</kbd> | delete buffer | normal |
 | <kbd>&lt;leader&gt;bh</kbd> | go to previous buffer | normal |
 | <kbd>&lt;leader&gt;bl</kbd> | go to next buffer | normal |
 
