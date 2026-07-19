@@ -14,8 +14,10 @@ IceNvim comes with the following colorschemes (and their variants; for details, 
 - [gruvbox theme](https://github.com/ellisonleao/gruvbox.nvim)
 - [kanagawa theme](https://github.com/rebelot/kanagawa.nvim)
 - [miasma theme](https://github.com/xero/miasma.nvim)
+- [monet theme](https://github.com/fynnfluegge/monet.nvim)
 - [nightfox theme](https://github.com/EdenEast/nightfox.nvim)
 - [tokyonight theme](https://github.com/folke/tokyonight.nvim) (this is the first theme I used for neovim btw)
+- [vague theme](https://github.com/vague-theme/vague.nvim)
 
 As well as some other UI-related plugins, including:
 
