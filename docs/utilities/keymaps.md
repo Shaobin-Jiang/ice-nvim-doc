@@ -138,6 +138,13 @@ In the buffer management picker, you also have this keymap:
 | :-: | :---------: | :---: |
 | <kbd>&lt;M-d&gt;</kbd> | delete buffer | insert |
 
+For the buffer management / live grep / find file pickers, you also have these keymaps:
+
+| key | description | modes |
+| :-: | :---------: | :---: |
+| <kbd>&lt;M-v&gt;</kbd> | vsplit | insert |
+| <kbd>&lt;M-s&gt;</kbd> | split | insert |
+
 ### Utils
 
 | key | description | modes |
