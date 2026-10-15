@@ -2,18 +2,16 @@ IceNvim uses a variety of plugins to guarantee a smooth editing experience.
 
 ## Plugin Manager
 
-IceNvim uses [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager. It is modern, powerful, and extremely easy to use.
-
-Beware that the way IceNvim uses Lazy is slightly different from the official approach, which we shall see later in the [customization](./Customization) section. The majority, though, remains unchanged, which is why a little knowledge on how to use this plugin manager would be helpful should you wish to further customize Lazy in IceNvim.
+IceNvim uses vim.pack as plugin manager which is added in 0.12. Compared to plugin managers like lazy.nvim, it is more easily configurable and much lighter.
 
 ## Colorscheme and UI
 
 IceNvim comes with the following colorschemes (and their variants; for details, check out the corresponding repositories):
 
 - [cyberdream theme](https://github.com/scottmckendry/cyberdream.nvim)
+- [everforest theme](https://github.com/sainnhe/everforest) (less strain on your eyes 👀)
 - [gruvbox theme](https://github.com/ellisonleao/gruvbox.nvim)
 - [kanagawa theme](https://github.com/rebelot/kanagawa.nvim)
-- [miasma theme](https://github.com/xero/miasma.nvim)
 - [monet theme](https://github.com/fynnfluegge/monet.nvim)
 - [nightfox theme](https://github.com/EdenEast/nightfox.nvim)
 - [tokyonight theme](https://github.com/folke/tokyonight.nvim) (this is the first theme I used for neovim btw)
@@ -45,7 +43,6 @@ IceNvim uses various plugins for better editting experience:
 
 Apart from the necessary plugins for basic editting, IceNvim also includes several useful plugins that boost development efficiency:
 
-- [avante](https://github.com/yetone/avante.nvim): use neovim like using using Cursor AI IDE; **disabled by default**
 - [colorizer](https://github.com/NvChad/nvim-colorizer.lua): colorize rgb / hex / ... colors
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim): git integration for buffers
 - [markdown-preview](https://github.com/iamcco/markdown-preview.nvim): live preview for markdown files

@@ -4,7 +4,7 @@ The answer is affirmative. You need at least some knowledge with neovim to get s
 
 The good news is that you do not need to be an expert (and frankly, experts do not use other people's configuration anyway). I would say that being familiar with the very basic editing in neovim would suffice, like cursor movement, mode switching, etc.
 
-It would be even better if you know how to configure neovim, like knowing how to use lazy.nvim and creating autocmds, as you would be able to further customize IceNvim, making it even more powerful and to your taste.
+It would be even better if you know a bit about configuring neovim, like how plugins work and creating autocmds, as you would be able to further customize IceNvim, making it even more powerful and to your taste.
 
 !!! note
     If you are a Chinese user, I would recommend my tutorial on [bilibili](https://www.bilibili.com/video/BV1N6ZRY7Etj/) to get you started with neovim.

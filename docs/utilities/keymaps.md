@@ -153,7 +153,7 @@ For the buffer management / live grep / find file pickers, you also have these k
 | <kbd>&lt;leader&gt;uc</kbd> | select config file | normal |
 | <kbd>&lt;leader&gt;uf</kbd> | toggle nvim-tree | normal |
 | <kbd>&lt;leader&gt;ug</kbd> | use grug-far to find and replace | normal |
-| <kbd>&lt;leader&gt;ul</kbd> | open lazy panel | normal |
+| <kbd>&lt;leader&gt;ul</kbd> | open plugin profile dashboard | normal |
 | <kbd>&lt;leader&gt;ut</kbd> | find todo items | normal |
 | <kbd>&lt;leader&gt;uu</kbd> | toggle undo tree | normal |
 

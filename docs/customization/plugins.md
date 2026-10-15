@@ -4,9 +4,31 @@ You can customize the plugins via the `Ice.plugins` table.
 
 Each plugin installed corresponds to a key-value pair in `Ice.plugins`. For example, if you want to customize `hop.nvim`, just make modifications to `Ice.plugins.hop`. The names used in `Ice.plugins` can be found in the [utilities/plugins](../../utilities/plugins) section, but with auto-completion enabled default, you can just navigate through the completion menu after typing `Ice.plugins.` to find the field name of a certain plugin.
 
-Each value in these pairs is a lazy.nvim-compatible plugin spec. Pretty much everything is the same as when you are using lazy, but instead of returning it, we are storing it in `Ice.plugins`.
+At the very beginning, IceNvim used lazy.nvim to manage plugins. Though it now migrates to vim.pack, it still uses specs that resemble lazy.nvim's. Each spec looks like this:
 
-You can also remove a plugin by setting it to `nil` or add a plugin that is not present in IceNvim.
+```lua
+{
+    "<repo-owner>/<repo-name>", -- e.g., "folke/tokyonight.nvim"
+    opts = {}, -- optional; if you only sets this, IceNvim passes this to the plugin's `setup` function
+    config = function(opts) end, -- optional; if you sets this, the function receives the `opts` you set and IceNvim does not do the `setup`
+    main = "<name>", -- optional; if not set, IceNvim guesses the module name for `setup`
+    dependencies = {}, -- optional; dependency list of the plugin
+    build = "<command>", -- optional; command to run when the plugin is installed / updated; can be a neovim command / shell command / lua function
+    version = "<version>" -- optional; version / branch / commit ... see `vim.pack.Spec`
+    enabled = true, -- optional; bool or function that returns bool; if false, IceNvim does not manage the plugin
+    init = function() end, -- optional; runs before loading if the plugin is enabled
+    lazy = false, -- optional; bool or function that returns bool; if false, IceNvim loads the plugin immediately
+    event = "<event>", -- optional; can be a list of events; IceNvim loads the plugin upon the event
+    ft = "<ft>", -- optional; can be a list of filetypes; IceNvim loads the plugin upon the filetype
+    keys = { { lhs = "", rhs = "", mode = "n", ft = "<optional-ft>" } }, -- optional; IceNvim loads the plugin when detecting one of these keys and creates the keymaps
+    cmd = "<command>", -- optional; IceNvim loads the plugin when running / auto-completing the command in cmdline
+}
+```
+
+You can also:
+
+- remove a plugin by setting it to `nil`
+- add a plugin that is not present in IceNvim
 
 For example:
 
@@ -37,16 +59,16 @@ Ice.plugins.aaa = {
 
 ## Lazy Loading a Plugin
 
-If you are familiar with lazy.nvim, you should know about the `VeryLazy` event and how it is used to lazy load a plugin. IceNvim is built with performance in mind and also further provides some custom events to help boost loading.
+If you are familiar with lazy.nvim, you should know about the `VeryLazy` event and how it is used to lazy load a plugin. While using vim.pack, IceNvim still preserves that event and also further provides some custom events to help boost loading.
 
 ### `IceLoad` Event
 
 `IceLoad` is triggered after the colorscheme is loaded and well after the `VeryLazy` event. However, if the current buffer is an unnamed buffer or it is the dashboard, the triggering of `IceLoad` will be postponed to the next time we enter a buffer. If the next buffer is still a dashboard / unnamed buffer, the triggering is further postponed.
 
-Note that `IceLoad` is a custom event, so when using it in the lazy.nvim `event` field, it should be prefixed with a `User `. For example:
+While `IceLoad` is a custom event, IceNvim internally watches this event so you need not prefix it with `User ` when using it. For example:
 
 ```lua
-Ice.plugins.avante.event = "User IceLoad"
+Ice.plugins.telescope.event = "IceLoad"
 ```
 
 ### `IceAfter` Event
@@ -55,27 +77,25 @@ Ice.plugins.avante.event = "User IceLoad"
 
 For example, in IceNvim, rainbow-delimiter loads with nvim-treesitter as it requires a tree-sitter parser to work. Another plugin, indent-blankline, requires rainbow-delimiter to load first to enable colorful indentation markers. Therefore, IceNvim needs to ensure that indent-blankline loads after nvim-treesitter.
 
-With `IceAfter`, this would be easy. You can just fire a `User IceAfter nvim-treesitter` event after nvim-treesitter is loaded and set the `event` for indent-blankline to `User IceAfter nvim-treesitter`:
+With `IceAfter`, this would be easy. IceNvim automatically fires a `IceAfter <name>` event after loading plugin `<name>`, so yo can just set the `event` for indent-blankline to `IceAfter nvim-treesitter`:
 
 ```lua
+-- Because the name is nvim-treesitter in `Ice.plugins`, the fired event after it loads is `IceAfter nvim-treesitter`
 Ice.plugins["nvim-treesitter"] = {
     -- ...
-    config = function (_, opts) {
-      -- Setting up nvim-treesitter
-      vim.api.nvim_exec_autocmds("User", { pattern = "IceAfter nvim-treesitter" })
-    },
 }
 
-Ice.plugins["indent-blankline"].event = "User IceAfter nvim-treesitter"
+-- The `IceAfter` event is also handled by IceNvim so no `User ` is needed.
+Ice.plugins["indent-blankline"].event = "IceAfter nvim-treesitter"
 ```
 
-IceNvim also fires the `IceAfter colorscheme` after the colorscheme is set, so you can also use `User IceAfter colorscheme` to load a plugin after the colorscheme is ready (differing from `IceLoad` in that this does not care about whether you are viewing the dashboard).
+IceNvim also fires the `IceAfter colorscheme` after the colorscheme is set, so you can also use `IceAfter colorscheme` to load a plugin after the colorscheme is ready (differing from `IceLoad` in that this does not care about whether you are viewing the dashboard).
 
 ## Language-Specific Configuration
 
 As mentioned above, you can disable any plugin by setting the corresponding field to `nil`. However, it would be better if you use a different approach with a few of them. These plugins are exclusively responsible for development in a certain language, and IceNvim has a different mechanism for managing them.
 
-IceNvim supports development for these languages: Bash / C / C++ / C# / Flutter / Go / CSS / HTML / JavaScript / Typescript / JSON / Lua / Python / Typst / Rust. Among these, some are managed by plugins while others are supported via LSPs and formatters. To provide a universal interface to managing them, IceNvim introduces the `Ice.lsp` table. Each language corresponds to a field in this table:
+IceNvim supports development for these languages: Bash / C / C++ / C# / Flutter / Go / CSS / HTML / JavaScript / Typescript / JSON / Lua / Python / Typst / Rust. Among these, some are managed by plugins while others are supported via LSPs and formatters. To provide a universal interface to managing them, IceNvim introduces the `Ice.lsp` table. Each language corresponds to a field below:
 
 - `emmet-ls`
 - `pyright`: python
@@ -92,7 +112,7 @@ IceNvim supports development for these languages: Bash / C / C++ / C# / Flutter 
 - `lua-language-server`
 - `omnisharp`: C#
 - `flutter`
-- `latex`
+- `texlab`
 
 By default, only `lua-language-server` is enabled. To enable support for a language, just set `enabled = true`:
 

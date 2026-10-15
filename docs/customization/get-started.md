@@ -25,7 +25,7 @@ If you have taken a look at the directory structure of the IceNvim config, you c
 
 IceNvim first loads the config in `core` which includes basic functions that do not require a plugin. If you run neovim with the `--noplugin` flag, by default only the configuration in here is used.
 
-The `lsp` and `plugins` modules are both responsible for functions that are only available when plugins are enabled. These two modules are loaded after `core`. However, when I say "loaded" here, I am not talking about the **loading of plugins**. Rather, what these modules do is storing the configuration spec (for details, you might check the documentation of [lazy.nvim](https://lazy.folke.io/spec)) in a global variable called `Ice`.
+The `lsp` and `plugins` modules are both responsible for functions that are only available when plugins are enabled. These two modules are loaded after `core`. However, when I say "loaded" here, I am not talking about the **loading of plugins**. Rather, what these modules do is storing the configuration spec in a global variable called `Ice`.
 
 What comes last is the `custom` module. Here, you can make modifications to options that come with neovim (such as fields in `vim.o` and `vim.g`) as well as the `Ice` table. Since `custom` comes after `core`, `plugins` and `lsp`, any default settings made by IceNvim in these modules can be overridden.
 
