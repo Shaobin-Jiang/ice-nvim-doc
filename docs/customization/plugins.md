@@ -22,6 +22,7 @@ At the very beginning, IceNvim used lazy.nvim to manage plugins. Though it now m
     ft = "<ft>", -- optional; can be a list of filetypes; IceNvim loads the plugin upon the filetype
     keys = { { lhs = "", rhs = "", mode = "n", ft = "<optional-ft>" } }, -- optional; IceNvim loads the plugin when detecting one of these keys and creates the keymaps
     cmd = "<command>", -- optional; IceNvim loads the plugin when running / auto-completing the command in cmdline
+    workspace = "<workspace-pattern>", -- optional; can be a list of patterns; IceNvim loads the plugin if the workspace contains the files
 }
 ```
 
