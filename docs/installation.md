@@ -1,4 +1,4 @@
-IceNvim requires the latest stable version of neovim to run. This means that you will need neovim >= **0.11.0**.
+IceNvim requires the latest stable version of neovim to run. This means that you will need neovim >= **0.12.0**.
 
 ## Prerequisites
 
